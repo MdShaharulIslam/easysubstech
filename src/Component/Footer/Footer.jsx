@@ -7,7 +7,7 @@ const Footer = () => {
                         <div className="w-full -mx-6 lg:w-2/5">
                             <div className="px-6">
                                 <a href="#">
-                                    <img className="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt="" />
+                                <h1 className="text-6xl font-extrabold">Logo</h1>
 
                                 </a>
 
