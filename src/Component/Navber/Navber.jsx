@@ -10,7 +10,7 @@ const Navber = () => {
         <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
           {/* Logo */}
           <div className="flex items-center justify-between">
-            <a href="#">
+            <a href="/">
               <img className="w-auto h-12" src={"/public/logo.png"} alt="Logo" />
             </a>
 

@@ -1,30 +1,31 @@
-
-
+import serv1 from "../../../../src/assets/payment-processing-101-header.jpg";
+import serv2 from "../../../../src/assets/crypto.jpg";
+import serv3 from "../../../../src/assets/recuring.png";
 const Services = () => {
   return (
-    <section className="bg-gray-50 py-16" id="services">
+    <section className=" py-16" id="services">
       <div className="container mx-auto px-4 lg:px-20">
-        <h2 className="text-4xl font-bold text-gray-800 text-center mb-12">
+        <h2 className="text-4xl font-bold text-white text-center mb-12">
           Our Services
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Service 1 */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="bg-white bg-opacity-10 shadow-lg rounded-lg overflow-hidden">
             <img
-              src="https://via.placeholder.com/400x250"
-              alt="Service 1"
+              src={serv1}
+              alt="Payment Processing"
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Web Development
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Payment Processing
               </h3>
-              <p className="text-gray-600 mb-4">
-                We offer cutting-edge web development services, including front-end and back-end solutions for a fully integrated and responsive web experience.
+              <p className="text-white mb-4 ">
+                Secure and efficient payment solutions for businesses and individuals, supporting multiple currencies and global transactions.
               </p>
               <a
-                href="/contact"
+                href="#"
                 className="text-blue-500 font-semibold hover:underline"
               >
                 Learn More
@@ -33,18 +34,18 @@ const Services = () => {
           </div>
 
           {/* Service 2 */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="bg-white bg-opacity-10 shadow-lg rounded-lg overflow-hidden">
             <img
-              src="https://via.placeholder.com/400x250"
-              alt="Service 2"
+              src={serv2}
+              alt="Crypto Payments"
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Mobile App Development
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Crypto Payments
               </h3>
-              <p className="text-gray-600 mb-4">
-                Our expert team builds seamless mobile applications that provide users with an intuitive experience, whether for iOS or Android platforms.
+              <p className="text-white mb-4">
+                Accept cryptocurrency payments with ease using our user-friendly interface, designed for modern businesses.
               </p>
               <a
                 href="/contact"
@@ -56,18 +57,18 @@ const Services = () => {
           </div>
 
           {/* Service 3 */}
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="bg-white bg-opacity-10 shadow-lg rounded-lg overflow-hidden">
             <img
-              src="https://via.placeholder.com/400x250"
-              alt="Service 3"
+              src={serv3}
+              alt="Recurring Payments"
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                E-commerce Solutions
+              <h3 className="text-xl font-semibold text-white mb-4">
+                Recurring Payments
               </h3>
-              <p className="text-gray-600 mb-4">
-                We help businesses expand online by providing custom e-commerce solutions, including store design, payment gateway integration, and product management.
+              <p className="text-white mb-4">
+                Automate subscription billing and recurring payments with our flexible and reliable solutions.
               </p>
               <a
                 href="/contact"
@@ -79,13 +80,13 @@ const Services = () => {
           </div>
         </div>
 
-        {/* Service 4 */}
-        <div className="mt-12 bg-white p-8 shadow-lg rounded-lg">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-            Digital Marketing
+        {/* Additional Service */}
+        <div className="mt-12 bg-white bg-opacity-10 p-8 shadow-lg rounded-lg">
+          <h3 className="text-2xl font-semibold text-white mb-4">
+            Fraud Prevention & Security
           </h3>
-          <p className="text-gray-600 mb-4">
-            Our digital marketing services include SEO, PPC, social media marketing, and content marketing to help your business reach and engage with a wider audience.
+          <p className="text-white mb-4">
+            Protect your transactions with advanced fraud detection and encryption technologies, ensuring peace of mind for your business.
           </p>
           <a
             href="/contact"
