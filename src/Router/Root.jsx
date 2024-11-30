@@ -5,6 +5,7 @@ import About from "../Component/Pages/About/About";
 import Checkout from './../Component/Pages/Checkout/Checkout';
 import ContactUs from "../Component/Pages/Contact/Contact";
 import Services from "../Component/Pages/Services/Services";
+import ReturnPolice from "../Component/ReturnPolice/ReturnPolice";
 
 // Create the router
 export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "/services", 
         element: <Services></Services>, 
+      },
+      {
+        path: "/ReturnPolice", 
+        element: <ReturnPolice></ReturnPolice>, 
       },
     
     ],

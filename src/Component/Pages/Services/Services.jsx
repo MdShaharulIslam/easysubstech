@@ -1,6 +1,7 @@
 import serv1 from "../../../../src/assets/payment-processing-101-header.jpg";
 import serv2 from "../../../../src/assets/crypto.jpg";
 import serv3 from "../../../../src/assets/recuring.png";
+import { Link } from "react-router-dom";
 const Services = () => {
   return (
     <section className=" py-16" id="services">
@@ -70,12 +71,12 @@ const Services = () => {
               <p className="text-white mb-4">
                 Automate subscription billing and recurring payments with our flexible and reliable solutions.
               </p>
-              <a
+              <Link 
                 href="/contact"
                 className="text-blue-500 font-semibold hover:underline"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -88,12 +89,12 @@ const Services = () => {
           <p className="text-white mb-4">
             Protect your transactions with advanced fraud detection and encryption technologies, ensuring peace of mind for your business.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/ReturnPolice"
             className="text-blue-500 font-semibold hover:underline"
           >
             Learn More
-          </a>
+          </Link>
         </div>
       </div>
     </section>

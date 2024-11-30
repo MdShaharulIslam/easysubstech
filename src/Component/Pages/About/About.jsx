@@ -9,13 +9,13 @@ const About = () => {
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Section */}
-<div className="neon-container">
-  <img
-    src={about}
-    alt="bdCoinsPaid Logo"
-    className="mx-auto"
-  />
-</div>
+          <div className="neon-container">
+            <img
+              src={about}
+              alt="bdCoinsPaid Logo"
+              className="mx-auto"
+            />
+          </div>
 
           {/* Description Section */}
           <div>
