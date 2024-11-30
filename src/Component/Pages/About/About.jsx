@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import about from "../../../../public/logo2.png";
+import about from "../../../../public/2.png";
 const About = () => {
   return (
     <section className="bg-white bg-opacity-5 py-16" id="about">
@@ -9,13 +9,13 @@ const About = () => {
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Section */}
-          <div className="text-center">
-            <img
-              src={about} 
-              alt="bdCoinsPaid Logo"
-              className="rounded-full mx-auto w-60 h-60 border-4 border-blue-500 shadow-lg"
-            />
-          </div>
+<div className="neon-container">
+  <img
+    src={about}
+    alt="bdCoinsPaid Logo"
+    className="mx-auto"
+  />
+</div>
 
           {/* Description Section */}
           <div>
