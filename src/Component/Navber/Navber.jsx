@@ -11,8 +11,7 @@ const Navber = () => {
           {/* Logo */}
           <div className="flex items-center justify-between">
             <a href="#">
-            <img className="w-auto h-12" src={"/public/logo.png"} alt="" />
-        
+              <img className="w-auto h-12" src={"/public/logo.png"} alt="Logo" />
             </a>
 
             {/* Mobile menu button */}
@@ -60,14 +59,12 @@ const Navber = () => {
 
           {/* Menu items */}
           <div
-            className={`flex-col md:flex-row md:items-center absolute md:relative md:flex bg-white dark:bg-gray-800 md:bg-transparent left-0 w-full md:w-auto px-6 md:px-0 transition-transform duration-300 ease-in-out ${
-              isOpen
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-full pointer-events-none"
-            } md:translate-y-0`}
+            className={`flex-col md:flex md:flex-row md:items-center absolute md:relative bg-white dark:bg-gray-800 left-0 w-full md:w-auto px-6 md:px-0 transition-transform duration-300 ease-in-out ${
+              isOpen ? "flex opacity-100" : "hidden"
+            } md:flex`}
           >
             <div className="flex flex-col md:flex-row md:mx-6">
-            <Link
+              <Link
                 to="/"
                 className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
               >
@@ -77,7 +74,6 @@ const Navber = () => {
                 to="/services"
                 className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
               >
-                {" "}
                 Services
               </Link>
               <Link
