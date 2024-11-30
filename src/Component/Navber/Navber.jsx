@@ -102,7 +102,6 @@ const Navber = () => {
              
             </div>
 
-            {/* Cart Icon */}
           </div>
         </div>
       </nav>
