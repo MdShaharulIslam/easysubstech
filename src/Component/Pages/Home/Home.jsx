@@ -36,6 +36,72 @@ const Home = () => {
           </div>
         </div>
       </header>
+      <section className="py-16 bg-white dark:bg-gray-900">
+  <div className="container px-6 mx-auto text-center">
+    <h2 className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl">
+      Why Choose <span className="text-blue-500">bdCoinsPaid?</span>
+    </h2>
+    <div className="grid grid-cols-1 gap-6 mt-8 lg:grid-cols-3">
+      <div
+        className="p-6 bg-gray-100 rounded-lg shadow dark:bg-gray-800 animate-fade-in-up"
+      >
+        <h3 className="text-lg font-semibold text-gray-700 dark:text-white">
+          Global Accessibility
+        </h3>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Conduct transactions effortlessly across the globe with integrated currency conversion.
+        </p>
+      </div>
+      <div
+        className="p-6 bg-gray-100 rounded-lg shadow dark:bg-gray-800 animate-fade-in-up"
+        style={{ animationDelay: "0.2s" }}
+      >
+        <h3 className="text-lg font-semibold text-gray-700 dark:text-white">
+          Secure Payments
+        </h3>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Ensure top-notch security with SSL certification and fraud prevention.
+        </p>
+      </div>
+      <div
+        className="p-6 bg-gray-100 rounded-lg shadow dark:bg-gray-800 animate-fade-in-up"
+        style={{ animationDelay: "0.4s" }}
+      >
+        <h3 className="text-lg font-semibold text-gray-700 dark:text-white">
+          Transparent Policies
+        </h3>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Clear and fair terms, refund options, and customer-first commitment.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section className="py-16 bg-gray-50 dark:bg-gray-800">
+  <div className="container px-6 mx-auto">
+    <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white lg:text-3xl">
+      Explore Our <span className="text-blue-500">Unique Features</span>
+    </h2>
+    <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-4">
+      {[
+        { title: "Multi-Currency Support", description: "Transact in multiple currencies seamlessly." },
+        { title: "Fast Transactions", description: "Enjoy lightning-speed payments and transfers." },
+        { title: "24/7 Support", description: "Round-the-clock assistance for all your needs." },
+        { title: "User-Friendly Interface", description: "A simple yet powerful design for effortless use." },
+      ].map((feature, index) => (
+        <div
+          key={index}
+          className="p-6 text-center bg-white rounded-lg shadow-md dark:bg-gray-900"
+        >
+          <h3 className="text-lg font-semibold text-gray-700 dark:text-white">{feature.title}</h3>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
     </div>
   );
 };
