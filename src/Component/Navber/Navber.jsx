@@ -11,7 +11,8 @@ const Navber = () => {
           {/* Logo */}
           <div className="flex items-center justify-between">
             <a href="#">
-              <h1 className="text-4xl font-extrabold text-blue-600">Logo</h1>
+            <img className="w-auto h-12" src={"/public/logo.png"} alt="" />
+        
             </a>
 
             {/* Mobile menu button */}
@@ -59,14 +60,14 @@ const Navber = () => {
 
           {/* Menu items */}
           <div
-            className={`flex-col md:flex-row md:items-center absolute md:relative md:flex md:opacity-100 md:translate-x-0 bg-white dark:bg-gray-800 md:bg-transparent left-0 w-full md:w-auto px-6 md:px-0 transition-all duration-300 ease-in-out ${
+            className={`flex-col md:flex-row md:items-center absolute md:relative md:flex bg-white dark:bg-gray-800 md:bg-transparent left-0 w-full md:w-auto px-6 md:px-0 transition-transform duration-300 ease-in-out ${
               isOpen
                 ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-full"
+                : "opacity-0 -translate-y-full pointer-events-none"
             } md:translate-y-0`}
           >
             <div className="flex flex-col md:flex-row md:mx-6">
-              <Link
+            <Link
                 to="/"
                 className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
               >
@@ -97,11 +98,7 @@ const Navber = () => {
               >
                 Checkout
               </Link>
-
-             
-             
             </div>
-
           </div>
         </div>
       </nav>
