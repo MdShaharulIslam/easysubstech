@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {Button} from "@material-tailwind/react";
+import useAuth from "./../Hooks/useAuth";
 
 const Navber = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+	const { user } = useAuth();
   return (
     <div>
       <nav className="relative bg-white shadow dark:bg-gray-800">
@@ -95,6 +97,36 @@ const Navber = () => {
                 Checkout
               </Link>
             </div>
+            <div className="flex items-center gap-x-1">
+					{user ? (
+						<>
+							<div className="hidden lg:inline-block ">
+								{/* <ProfileMenu /> */}
+							</div>
+						</>
+					) : (
+						<>
+							<Link to="/login">
+								<Button
+									variant="text"
+									size="sm"
+									className="hidden lg:inline-block "
+								>
+									<span>Log In</span>
+								</Button>
+							</Link>
+							<Link to="/register">
+								<Button
+									variant="gradient"
+									size="sm"
+									className="hidden lg:inline-block "
+								>
+									<span>Join Us</span>
+								</Button>
+							</Link>
+						</>
+					)}
+				</div>
           </div>
         </div>
       </nav>
