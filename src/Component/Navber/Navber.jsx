@@ -10,17 +10,17 @@ const Navber = () => {
   const navigate = useNavigate(); // Used for navigation after logout
 
   const handleLogout = () => {
-		logOut().then(() => {
-			Swal.fire({
-				title: "Successfully",
-				text: "Your Account has been Log Out!",
-				icon: "success",
-				showConfirmButton: false,
-				timer: 1000,
-			});
-			navigate("/");
-		});
-	};
+    logOut().then(() => {
+      Swal.fire({
+        title: "Successfully",
+        text: "Your Account has been Log Out!",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      navigate("/");
+    });
+  };
 
 
   return (
@@ -29,9 +29,15 @@ const Navber = () => {
         <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
           {/* Logo */}
           <div className="flex items-center justify-between">
-            <a href="/">
-              <img className="w-auto rounded-full h-12" src={"/public/Add a heading.png"} alt="Logo" />
+            <a className="neon-wrapper" href="/">
+              <img
+                className="neon-logo"
+                src={"/public/Add a heading.png"}
+                alt="Logo"
+              />
             </a>
+
+
 
             {/* Mobile menu button */}
             <div className="flex md:hidden">
@@ -78,9 +84,8 @@ const Navber = () => {
 
           {/* Menu items */}
           <div
-            className={`flex-col md:flex md:flex-row md:items-center absolute md:relative bg-white dark:bg-gray-800 left-0 w-full md:w-auto px-6 md:px-0 transition-transform duration-300 ease-in-out ${
-              isOpen ? "flex opacity-100" : "hidden"
-            } md:flex`}
+            className={`flex-col md:flex md:flex-row md:items-center absolute md:relative bg-white dark:bg-gray-800 left-0 w-full md:w-auto px-6 md:px-0 transition-transform duration-300 ease-in-out ${isOpen ? "flex opacity-100" : "hidden"
+              } md:flex`}
           >
             <div className="flex flex-col md:flex-row md:mx-6">
               <Link

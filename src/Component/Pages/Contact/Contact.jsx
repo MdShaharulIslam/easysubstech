@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -12,11 +13,31 @@ const ContactUs = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   alert("Thank you for reaching out. We'll get back to you soon!");
+  //   console.log("Message Sent:", formData);
+  // };
+  const form = useRef();
+    
+  const sendEmail = (e) => {
     e.preventDefault();
-    alert("Thank you for reaching out. We'll get back to you soon!");
-    console.log("Message Sent:", formData);
+
+    emailjs
+      .sendForm('service_7r43ehg',
+         'template_dpbpc03', form.current, {
+        publicKey: '6lz-2yzcFuarGaxJV',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
   };
+
 
   return (
     <section className=" py-16" id="contact">
@@ -31,17 +52,21 @@ const ContactUs = () => {
           Fill out the form below, and we’ll get back to you shortly.
         </p>
 
-        <form onSubmit={handleSubmit}>
+        <form  
+        // onSubmit={handleSubmit} 
+        ref={form}
+        onSubmit={sendEmail}
+        >
           <div className="mb-4">
             <label htmlFor="name" className="block text-white font-medium mb-2">Full Name</label>
             <input
               type="text"
               id="name"
-              name="name"
+              name="from_name"
               value={formData.name}
               onChange={handleInputChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 bg-transparent"
+              // required
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-white bg-transparent"
             />
           </div>
 
@@ -54,7 +79,7 @@ const ContactUs = () => {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 bg-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-white bg-transparent"
             />
           </div>
 
@@ -66,7 +91,7 @@ const ContactUs = () => {
               value={formData.message}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 bg-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-white bg-transparent"
               rows="4"
             ></textarea>
           </div>
@@ -84,16 +109,16 @@ const ContactUs = () => {
       <div className="bg-transparent p-8 border border-gray-300 rounded-lg shadow-sm">
         <h3 className="text-xl font-semibold text-white mb-4">Our Contact Information</h3>
         <div className="mb-4">
-          <p className="text-white mb-2"><strong>Email:</strong> info@yourdomain.com</p>
+          <p className="text-white mb-2"><strong>Email:</strong> easysubstech@gmail.com</p>
           <p className="text-white mb-2"><strong>Phone:</strong> +1 (555) 123-4567</p>
-          <p className="text-white"><strong>Address:</strong> 123 Main Street, City, Country</p>
+          <p className="text-white"><strong>Address:</strong> Barishal cadet collage, Barishal, Bangladesh</p>
         </div>
 
         <div className="mt-6">
           <h4 className="text-lg font-medium text-white mb-4">Follow Us</h4>
           <div className="flex space-x-4">
             <a
-              href="https://facebook.com/yourbusiness"
+              href="https://www.facebook.com/yousufarjulove"
               className="text-white hover:text-blue-600"
               target="_blank"
               rel="noopener noreferrer"

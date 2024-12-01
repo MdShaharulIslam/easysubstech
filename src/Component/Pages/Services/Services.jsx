@@ -97,6 +97,7 @@ const Services = () => {
           </Link>
         </div>
       </div>
+      <Link to='/AddServices'> AddServices</Link>
     </section>
   );
 };

@@ -10,23 +10,25 @@ const Footer = () => {
                         <div className="w-full -mx-6 lg:w-2/5">
                             <div className="px-6">
                                 <a href="#">
-                                    <img className="w-auto h-7" src={"/public/images.png"} alt="" />
+                                    <img className="w-auto h-12 rounded-full" src={"/public/Add a heading.png"} alt="" />
 
                                 </a>
 
                                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                                BdCoinsPay.com is a user-friendly e-commerce platform specializing in digital products, cryptocurrency payment solutions, and seamless online transactions. It offers a secure and efficient shopping experience, catering to modern tech-savvy consumers in Bangladesh and beyond.</p>
+                                EasySubsTech.com is a dynamic platform dedicated to enhancing your social media presence. Specializing in boosting services for platforms like Facebook, YouTube, and more, it provides reliable and efficient solutions for increasing engagement and visibility. EasySubsTech.com ensures secure, fast, and user-friendly transactions, catering to individuals and businesses seeking growth in the digital world.</p>
 
                                 <div className="flex mt-6 -mx-2">
                                     <a href="#"
                                         className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                                         aria-label="Reddit">
-                                       <FaFacebook />
+                                            <a href="https://www.facebook.com/yousufarjulove"><FaFacebook  /></a>
+                                       
                                     </a>
 
                                     <a href="#"
                                         className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                                         aria-label="Facebook">
+                                            
                                        <FaWhatsapp />
                                     </a>
 
@@ -70,22 +72,22 @@ const Footer = () => {
 
                                 <div>
                                     <h3 className="text-gray-700 uppercase dark:text-white">Products</h3>
-                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Mega cloud</a>
-                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Aperion UI</a>
-                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Meraki UI</a>
+                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Youtube Boost</a>
+                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Facebook Boost</a>
+                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Facebook post Boost</a>
                                 </div>
 
                                 <div>
                                     <h3 className="text-gray-700 uppercase dark:text-white">Contact</h3>
                                     <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">+1 526 654 8965</span>
-                                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">example@email.com</span>
+                                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">easysubstech@gmail.com</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
                     <div>
-                        <p className="text-center text-gray-500 dark:text-gray-400">© Brand 2020 - All rights reserved</p>
+                        <p className="text-center text-gray-500 dark:text-gray-400">© Brand 2024 - All rights reserved</p>
                     </div>
                 </div>
             </footer>

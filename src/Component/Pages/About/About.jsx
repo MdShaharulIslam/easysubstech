@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import about from "../../../../public/2.png";
+import about from "../../../../public/Add a heading.png";
 const About = () => {
   return (
     <section className="bg-white bg-opacity-5 py-16" id="about">
@@ -20,16 +20,18 @@ const About = () => {
           {/* Description Section */}
           <div>
             <h3 className="text-2xl font-semibold text-white mb-4">
-              Welcome to bdCoinsPaid
+              Welcome to EasySubsTech
             </h3>
             <p className="text-white mb-4">
-              At **bdCoinsPaid**, we redefine digital transactions by providing secure, efficient, and user-friendly payment solutions tailored to meet the needs of modern consumers. Our platform supports cryptocurrency payments, making global transactions seamless for businesses and individuals.
+              At <span className="font-medium te">EasySubsTech,</span> we are committed to transforming the way you grow and manage your social media presence. As a trusted platform for boosting services on Facebook, YouTube, and other major social platforms, we provide cutting-edge solutions to help individuals, creators, and businesses achieve their digital growth goals.
             </p>
             <p className="text-white mb-4">
-              Whether you are paying bills, shopping online, or managing subscription payments, **bdCoinsPaid** ensures every transaction is encrypted, fast, and reliable. With a focus on innovation, we empower users to transact confidently and explore new digital possibilities.
+              Our comprehensive services are designed to increase engagement, amplify visibility, and establish your brand in the competitive world of social media. Whether you're aiming to gain more followers, enhance video views, or promote your content, <span className="font-medium te">EasySubsTech</span>  ensures a seamless and secure experience tailored to your unique needs.
             </p>
             <p className="text-white mb-4">
-              Our services are designed for businesses and individuals seeking a smarter way to handle payments, offering tools like recurring payments, crypto wallets, and advanced fraud prevention.
+              What sets us apart is our dedication to innovation and user satisfaction. With advanced tools, expert support, and detailed analytics, we empower users to make data-driven decisions and maximize their growth potential. At <span className="font-medium te">EasySubsTech,</span>  we prioritize trust, reliability, and efficiency, making us the go-to platform for anyone looking to thrive in the ever-evolving digital landscape.
+
+              Join us on the journey to success, and let’s boost your online presence together!
             </p>
             <div className="mt-6">
               <Link

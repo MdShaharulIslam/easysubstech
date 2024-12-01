@@ -12,6 +12,7 @@ import Login from './../Component/Pages/Login/Login';
 import Payment from './../Component/Payment/Payment';
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Component/Dashboard/Dashboard";
+import AddServices from "../Component/Pages/Services/AddServices";
 
 // Create the router
 export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "/payment", 
         element: <PrivateRoute><Payment></Payment></PrivateRoute>, 
+      },
+      {
+path:'/AddServices',
+element:<AddServices></AddServices>
       },
       {
         path: "/dashboard", 
