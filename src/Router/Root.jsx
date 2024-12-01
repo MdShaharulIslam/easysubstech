@@ -7,6 +7,9 @@ import ContactUs from "../Component/Pages/Contact/Contact";
 import Services from "../Component/Pages/Services/Services";
 import ReturnPolice from "../Component/ReturnPolice/ReturnPolice";
 
+import SignUp from './../Component/Pages/SignUp/SignUp';
+import Login from './../Component/Pages/Login/Login';
+
 // Create the router
 export const router = createBrowserRouter([
   {
@@ -36,6 +39,14 @@ export const router = createBrowserRouter([
       {
         path: "/ReturnPolice", 
         element: <ReturnPolice></ReturnPolice>, 
+      },
+      {
+        path: "/register", 
+        element: <SignUp></SignUp> , 
+      },
+      {
+        path: "/login", 
+        element: <Login></Login> , 
       },
     
     ],
