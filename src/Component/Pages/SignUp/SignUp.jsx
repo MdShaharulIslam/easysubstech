@@ -1,8 +1,8 @@
 import { Card, Input, Typography } from "@material-tailwind/react";
-import Select from "react-select";
+
 import { AwesomeButton } from "react-awesome-button";
 
-import { Controller, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
@@ -15,7 +15,7 @@ const SignUp = () => {
     const {
         register,
         handleSubmit,
-        control,
+        
         formState: { errors },
     } = useForm();
 
@@ -23,7 +23,6 @@ const SignUp = () => {
 
     const onSubmit = async (data) => {
         try {
-            // Upload the image to imgbb
             const formData = new FormData();
             formData.append("image", data.image[0]);
 
@@ -35,11 +34,9 @@ const SignUp = () => {
             const imageResult = await imageResponse.json();
 
             if (imageResult.success) {
-                // Create a new user in Firebase
                 await createUser(data.email, data.password);
                 await userUpdate(data.name, imageResult.data.display_url);
 
-                // Show success notification
                 Swal.fire({
                     title: "Success!",
                     text: "Your account has been created successfully!",
@@ -48,13 +45,11 @@ const SignUp = () => {
                     timer: 1000,
                 });
 
-                // Redirect to the homepage or login page
                 navigate("/");
             } else {
                 throw new Error("Image upload failed.");
             }
         } catch (error) {
-            // Handle errors
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -66,163 +61,121 @@ const SignUp = () => {
     };
 
     return (
-        <>
-            
+        <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
             <Card
                 color="transparent"
                 shadow={false}
-                className="mx-auto md:w-1/2 lg:w-1/4 py-20"
+                className="mx-auto md:w-1/2 lg:w-1/3 bg-gray-800 p-8 rounded-lg"
             >
-                <Typography variant="h4" color="blue-gray">
-                    MediCamp | Sign Up
+                <Typography
+                    variant="h4"
+                    color="white"
+                    className="text-center font-extrabold"
+                >
+                    Easysubstech | Sign Up
                 </Typography>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
+                    className="mt-8 space-y-6"
                 >
-                    <div className="mb-1 flex flex-col gap-6">
-                        {/* Name Input */}
-                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                    {/* Name Input */}
+                    <div>
+                        <Typography variant="h6" color="white">
                             Your Name
                         </Typography>
-                        <div>
-                            <Input
-                                size="lg"
-                                name="name"
-                                type="text"
-                                {...register("name", { required: true, maxLength: 80 })}
-                                placeholder="John Wick"
-                                className="!border-t-blue-gray-200 focus:!border-t-gray-900"
-                                labelProps={{
-                                    className: "before:content-none after:content-none",
-                                }}
-                            />
-                            {errors.name && (
-                                <p className="text-red-600">Write your valid name</p>
-                            )}
-                        </div>
+                        <Input
+                            size="lg"
+                            name="name"
+                            type="text"
+                            {...register("name", { required: true, maxLength: 80 })}
+                            placeholder="John Wick"
+                            className="bg-gray-700 border-none text-white"
+                        />
+                        {errors.name && (
+                            <p className="text-red-400 mt-2">Write your valid name</p>
+                        )}
+                    </div>
 
-                        {/* Email Input */}
-                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                    {/* Email Input */}
+                    <div>
+                        <Typography variant="h6" color="white">
                             Your Email
                         </Typography>
-                        <div>
-                            <Input
-                                size="lg"
-                                name="email"
-                                type="email"
-                                {...register("email", { required: true })}
-                                placeholder="name@mail.com"
-                                className="!border-t-blue-gray-200 focus:!border-t-gray-900"
-                                labelProps={{
-                                    className: "before:content-none after:content-none",
-                                }}
-                            />
-                            {errors.email && (
-                                <p className="text-red-600">Enter your valid email</p>
-                            )}
-                        </div>
+                        <Input
+                            size="lg"
+                            name="email"
+                            type="email"
+                            {...register("email", { required: true })}
+                            placeholder="name@mail.com"
+                            className="bg-gray-700 border-none text-white"
+                        />
+                        {errors.email && (
+                            <p className="text-red-400 mt-2">Enter your valid email</p>
+                        )}
+                    </div>
 
-                        {/* Password Input */}
-                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                    {/* Password Input */}
+                    <div>
+                        <Typography variant="h6" color="white">
                             Password
                         </Typography>
-                        <div>
-                            <Input
-                                type="password"
-                                name="password"
-                                size="lg"
-                                {...register("password", {
-                                    required: true,
-                                    minLength: 6,
-                                    pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
-                                })}
-                                placeholder="********"
-                                className="!border-t-blue-gray-200 focus:!border-t-gray-900"
-                                labelProps={{
-                                    className: "before:content-none after:content-none",
-                                }}
-                            />
-                            {errors.password?.type === "required" && (
-                                <p className="text-red-600">Enter your valid password</p>
-                            )}
-                            {errors.password?.type === "minLength" && (
-                                <p className="text-red-600">Enter minimum 6 characters</p>
-                            )}
-                            {errors.password?.type === "pattern" && (
-                                <p className="text-red-600">
-                                    Password must include uppercase, lowercase, and numbers
-                                </p>
-                            )}
-                        </div>
+                        <Input
+                            type="password"
+                            name="password"
+                            size="lg"
+                            {...register("password", {
+                                required: true,
+                                minLength: 6,
+                                pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
+                            })}
+                            placeholder="********"
+                            className="bg-gray-700 border-none text-white"
+                        />
+                        {errors.password && (
+                            <p className="text-red-400 mt-2">
+                                Password must include uppercase, lowercase, and numbers
+                            </p>
+                        )}
+                    </div>
 
-                        {/* Profile Picture Upload */}
-                        <Typography variant="h6" color="blue-gray" className="-mb-3">
+                    {/* Profile Picture Upload */}
+                    <div>
+                        <Typography variant="h6" color="white">
                             Profile Picture
                         </Typography>
-                        <div>
-                            <Input
-                                type="file"
-                                {...register("image", { required: true })}
-                                name="image"
-                                className="!border-t-blue-gray-200 focus:!border-t-gray-900"
-                            />
-                            {errors.image && (
-                                <p className="text-red-600">Upload your profile picture</p>
-                            )}
-                        </div>
+                        <Input
+                            type="file"
+                            {...register("image", { required: true })}
+                            name="image"
+                            className="bg-gray-700 border-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        {errors.image && (
+                            <p className="text-red-400 mt-2">Upload your profile picture</p>
+                        )}
+                    </div>
 
-                        {/* Role Selection */}
-                        <Typography variant="h6" color="blue-gray" className="-mb-3">
-                            Your Role
-                        </Typography>
-                        <div>
-                            <Controller
-                                name="role"
-                                control={control}
-                                rules={{
-                                    required: true,
-                                }}
-                                render={({ field }) => (
-                                    <Select
-                                        className="z-10 border-t-blue-gray-200"
-                                        {...field}
-                                        options={[
-                                            {
-                                                value: "participant",
-                                                label: "Participant",
-                                            },
-                                            {
-                                                value: "healthcare-professional",
-                                                label: "Healthcare Professional",
-                                            },
-                                            { value: "organizer", label: "Organizer" },
-                                        ]}
-                                    />
-                                )}
-                            />
-                            {errors.role && (
-                                <p className="text-red-600">You must select your role</p>
-                            )}
-                        </div>
-
-                        {/* Sign Up Button */}
-                        <AwesomeButton type="primary" size="small">
-                            Sign Up
-                        </AwesomeButton>
+                    {/* Sign Up Button */}
+                    <div className="mt-6 text-center">
+                    <AwesomeButton
+							type="primary"
+							size="medium"
+							className="mt-6 bg-gradient-to-r from-blue-500  w-full via-teal-500 to-cyan-500 text-white hover:scale-105 transition-transform"
+						>
+							SignUp
+						</AwesomeButton>
                     </div>
                 </form>
-                <Typography color="gray" className="my-4 text-center font-normal">
+                <Typography color="white" className="my-4 text-center">
                     Already have an account?{" "}
                     <Link
                         to="/login"
-                        className="font-medium text-gray-900 hover:text-blue-700"
+                        className="font-medium text-blue-400 hover:underline"
                     >
                         Login
                     </Link>
                 </Typography>
             </Card>
-        </>
+        </div>
     );
 };
 

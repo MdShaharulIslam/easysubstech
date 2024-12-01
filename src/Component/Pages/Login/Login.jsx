@@ -32,14 +32,18 @@ const Login = () => {
 	return (
 		<>
 			{/* Background Section */}
-			<div className="min-h-screen bg-gradient-to-r  flex justify-center items-center">
+			<div className="min-h-screen bg-gradient-to-r from-gray-800 via-gray-900 to-black flex justify-center items-center">
 				<Card
-					color="white"
+					color="transparent"
 					shadow={true}
-					className="w-full sm:w-96 md:w-1/2 lg:w-1/3 py-10 px-6 rounded-lg shadow-lg"
+					className="w-full sm:w-96 md:w-1/2 lg:w-1/3 py-10 px-6 rounded-lg shadow-lg border border-gray-700 bg-gray-800"
 				>
-					<Typography variant="h4" color="blue-gray" className="text-center text-white mb-6">
-						MediCamp | Login
+					<Typography
+						variant="h4"
+						color="white"
+						className="text-center text-white mb-6 font-bold"
+					>
+						Easysubstech | Login
 					</Typography>
 					<form
 						onSubmit={handleSubmit(onSubmit)}
@@ -47,7 +51,7 @@ const Login = () => {
 					>
 						{/* Email Input */}
 						<div className="flex flex-col gap-2">
-							<Typography variant="h6" color="blue-gray" className="text-white">
+							<Typography variant="h6" color="white" className="text-white">
 								Your Email
 							</Typography>
 							<Input
@@ -55,7 +59,7 @@ const Login = () => {
 								type="email"
 								{...register("email", { required: true })}
 								placeholder="name@mail.com"
-								className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+								className="!border-gray-500 bg-gray-700 text-white placeholder-gray-400 focus:!border-gray-400"
 								labelProps={{
 									className: "before:content-none after:content-none",
 								}}
@@ -64,7 +68,7 @@ const Login = () => {
 
 						{/* Password Input */}
 						<div className="flex flex-col gap-2">
-							<Typography variant="h6" color="blue-gray" className="text-white">
+							<Typography variant="h6" color="white" className="text-white">
 								Password
 							</Typography>
 							<Input
@@ -72,7 +76,7 @@ const Login = () => {
 								size="lg"
 								{...register("password", { required: true })}
 								placeholder="********"
-								className="!border-t-blue-gray-200 focus:!border-t-gray-900"
+								className="!border-gray-500 bg-gray-700 text-white placeholder-gray-400 focus:!border-gray-400"
 								labelProps={{
 									className: "before:content-none after:content-none",
 								}}
@@ -80,17 +84,21 @@ const Login = () => {
 						</div>
 
 						{/* Login Button */}
-						<AwesomeButton type="primary" size="small" className="mt-6 bg-gradient-to-r from-blue-600 to-teal-500 text-white">
+						<AwesomeButton
+							type="primary"
+							size="medium"
+							className="mt-6 bg-gradient-to-r from-blue-500 via-teal-500 to-cyan-500 text-white hover:scale-105 transition-transform"
+						>
 							Login
 						</AwesomeButton>
 					</form>
 
 					{/* Sign Up Link */}
-					<Typography color="gray" className="my-4 text-center font-normal text-white">
+					<Typography color="white" className="my-4 text-center font-normal text-white">
 						Don&lsquo;t have an account?{" "}
 						<Link
 							to="/register"
-							className="font-medium text-blue-300 hover:text-blue-500"
+							className="font-medium text-teal-400 hover:text-teal-300 transition-colors"
 						>
 							Sign Up
 						</Link>

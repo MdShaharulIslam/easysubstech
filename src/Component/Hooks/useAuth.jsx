@@ -1,15 +1,8 @@
-import axios from "axios"
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
-const useAxiosPublic = () => {
-  const axiosInstance = axios.create({
-    baseURL: "http://localhost:5000",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-  
+const useAuth = () => {
+	return useContext(AuthContext);
+};
 
-  return axiosInstance
-}
-
-export default useAxiosPublic
+export default useAuth;

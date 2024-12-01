@@ -9,6 +9,9 @@ import ReturnPolice from "../Component/ReturnPolice/ReturnPolice";
 
 import SignUp from './../Component/Pages/SignUp/SignUp';
 import Login from './../Component/Pages/Login/Login';
+import Payment from './../Component/Payment/Payment';
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Component/Dashboard/Dashboard";
 
 // Create the router
 export const router = createBrowserRouter([
@@ -47,6 +50,16 @@ export const router = createBrowserRouter([
       {
         path: "/login", 
         element: <Login></Login> , 
+      },
+      {
+        path: "/payment", 
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>, 
+      },
+      {
+        path: "/dashboard", 
+        element: <PrivateRoute>
+          <Dashboard></Dashboard>
+        </PrivateRoute>, 
       },
     
     ],
