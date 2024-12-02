@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import UserDashboard from "./UserDashboard";
 import AdminDashboard from "./AdminDashboard";
 
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+
 const Dashboard = () => {
   const [role, setRole] = useState(null); // "user" or "admin"
+  const [loading, setLoading] = useState(true); // To handle loading state
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,7 +20,7 @@ const Dashboard = () => {
     setRole(userRole);
   }, [navigate]);
 
-  if (!role) {
+  if (loading) {
     return <p>Loading...</p>;
   }
 

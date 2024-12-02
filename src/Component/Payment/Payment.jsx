@@ -3,8 +3,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
-// Your Stripe publishable key
-const stripePromise = loadStripe("your_publishable_key_here");
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 
 const Payment = () => {
   return (
