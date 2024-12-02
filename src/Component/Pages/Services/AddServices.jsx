@@ -72,7 +72,7 @@ const AddServices = () => {
           name="productName"
           value={service.productName}
           onChange={handleChange}
-          className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 border text-black rounded-md focus:ring-blue-500 focus:border-blue-500"
           required
         />
         <label className="block text-sm font-medium mt-4">Brand</label>
@@ -81,7 +81,8 @@ const AddServices = () => {
           name="brand"
           value={service.brand}
           onChange={handleChange}
-          className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 border text-black
+           rounded-md focus:ring-blue-500 focus:border-blue-500"
           required
         />
         <label className="block text-sm font-medium mt-4">Description</label>
@@ -90,7 +91,7 @@ const AddServices = () => {
           value={service.description}
           onChange={handleChange}
           rows="4"
-          className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 border text-black rounded-md focus:ring-blue-500 focus:border-blue-500"
           required
         ></textarea>
       </div>

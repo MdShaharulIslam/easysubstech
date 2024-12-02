@@ -13,6 +13,7 @@ import Payment from './../Component/Payment/Payment';
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Component/Dashboard/Dashboard";
 import AddServices from "../Component/Pages/Services/AddServices";
+import TermsAndConditions from "../Component/Pages/PrivecyPolicy/TermsAndConditions";
 
 // Create the router
 export const router = createBrowserRouter([
@@ -59,6 +60,11 @@ export const router = createBrowserRouter([
       {
         path: '/AddServices',
         element: <AddServices></AddServices>
+      },
+      
+      {
+        path: '/TermsAndConditions',
+        element: <TermsAndConditions></TermsAndConditions>
       },
       {
         path: "/dashboard",

@@ -1,16 +1,16 @@
 import { Card, Input, Typography } from "@material-tailwind/react";
+
 import { AwesomeButton } from "react-awesome-button";
-import { useForm } from "react-hook-form";
+
+import {  useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
-const image_key = import.meta.env.VITE_IMAGE_KEY; // Ensure this is correctly set in your .env
+const image_key = import.meta.env.VITE_IMAGE_KEY;
 const image_api = `https://api.imgbb.com/1/upload?key=${image_key}`;
 
 const SignUp = () => {
-    const axiosPublic = useAxiosPublic();
     const { createUser, userUpdate } = useAuth();
     const {
         register,
@@ -22,12 +22,6 @@ const SignUp = () => {
 
     const onSubmit = async (data) => {
         try {
-            // Check if an image is uploaded
-            if (!data.image[0]) {
-                throw new Error("Please upload a profile picture.");
-            }
-
-            // Upload image
             const formData = new FormData();
             formData.append("image", data.image[0]);
 
@@ -79,41 +73,13 @@ const SignUp = () => {
             } else {
                 throw new Error("Image upload failed.");
             }
-
-            // Create user and update profile
-            await createUser(data.email, data.password);
-            await userUpdate(data.name, imageResult.data.display_url);
-
-            // Save user info to the database
-            const userInfo = {
-                name: data.name,
-                email: data.email,
-                image: imageResult.data.display_url,
-                role: "user", // Default role
-            };
-
-            const res = await axiosPublic.post("/users", userInfo);
-
-            if (res.status !== 201) {
-                throw new Error("Failed to save user information to the database.");
-            }
-
-            Swal.fire({
-                title: "Success!",
-                text: "Your account has been created successfully!",
-                icon: "success",
-                showConfirmButton: false,
-                timer: 1500,
-            });
-
-            navigate("/"); // Redirect to homepage or desired route
-
         } catch (error) {
             Swal.fire({
                 icon: "error",
-                title: "Error",
-                text: error.message || "Something went wrong!",
-                showConfirmButton: true,
+                title: "Oops...",
+                text: error.message,
+                showConfirmButton: false,
+                timer: 1000,
             });
         }
     };
@@ -123,7 +89,7 @@ const SignUp = () => {
             <Card
                 color="transparent"
                 shadow={false}
-                className="mx-auto md:w-1/2 lg:w-1/3 bg-gray-800 p-8 rounded-lg shadow-lg"
+                className="mx-auto md:w-1/2 lg:w-1/3 bg-gray-800 p-8 rounded-lg"
             >
                 <Typography variant="h4" color="white" className="text-center font-extrabold">
                     Easysubstech | Sign Up
@@ -136,10 +102,11 @@ const SignUp = () => {
                         </Typography>
                         <Input
                             size="lg"
+                            name="name"
                             type="text"
                             {...register("name", { required: true, maxLength: 80 })}
                             placeholder="John Wick"
-                            className="bg-gray-700 border-none text-white focus:ring-2 focus:ring-blue-500"
+                            className="bg-gray-700 border-none text-white"
                         />
                         {errors.name && <p className="text-red-400 mt-2">Write your valid name</p>}
                     </div>
@@ -151,10 +118,11 @@ const SignUp = () => {
                         </Typography>
                         <Input
                             size="lg"
+                            name="email"
                             type="email"
                             {...register("email", { required: true })}
                             placeholder="name@mail.com"
-                            className="bg-gray-700 border-none text-white focus:ring-2 focus:ring-blue-500"
+                            className="bg-gray-700 border-none text-white"
                         />
                         {errors.email && <p className="text-red-400 mt-2">Enter your valid email</p>}
                     </div>
@@ -166,6 +134,7 @@ const SignUp = () => {
                         </Typography>
                         <Input
                             type="password"
+                            name="password"
                             size="lg"
                             {...register("password", {
                                 required: true,
@@ -173,11 +142,11 @@ const SignUp = () => {
                                 pattern: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/,
                             })}
                             placeholder="********"
-                            className="bg-gray-700 border-none text-white focus:ring-2 focus:ring-blue-500"
+                            className="bg-gray-700 border-none text-white"
                         />
                         {errors.password && (
                             <p className="text-red-400 mt-2">
-                                Password must include uppercase, lowercase, and numbers.
+                                Password must include uppercase, lowercase, and numbers
                             </p>
                         )}
                     </div>
@@ -190,6 +159,7 @@ const SignUp = () => {
                         <Input
                             type="file"
                             {...register("image", { required: true })}
+                            name="image"
                             className="bg-gray-700 border-none focus:ring-2 focus:ring-blue-500"
                         />
                         {errors.image && <p className="text-red-400 mt-2">Upload your profile picture</p>}
