@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import UserDashboard from "./UserDashboard";
 import AdminDashboard from "./AdminDashboard";
+import useAdmin from "../Hooks/useAdmin/useAdmin";
+import useAuth from './../Hooks/useAuth';
 
 const Dashboard = () => {
-  const [role, setRole] = useState(null); // "user" or "admin"
-  const navigate = useNavigate();
+  // Get user from useAuth
+  const { user } = useAuth();
+  
+  // Get role from useAdmin and pass the user
+  const { role, loading, error } = useAdmin(user);
 
-  useEffect(() => {
-    // Mock role fetching, replace this with API or auth logic
-    const userRole = localStorage.getItem("userRole"); // e.g., from auth token
-    console.log(userRole);
-    if (!userRole) {
-      navigate("/login"); // Redirect to login if not authenticated
-    }
-    setRole(userRole);
-  }, [navigate]);
-
-  if (!role) {
+  if (loading) {
     return <p>Loading...</p>;
   }
 
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+ 
   return (
     <div>
       {role === "admin" ? <AdminDashboard /> : <UserDashboard />}
