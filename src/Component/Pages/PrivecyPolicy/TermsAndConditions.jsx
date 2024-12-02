@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
         <div className="bg-white rounded-lg shadow-lg p-6">
           <h2 className="text-2xl font-semibold text-gray-800 mb-6">Introduction</h2>
           <p className="text-gray-700">
-            Welcome to [Company Name], a platform that connects users to various services. By accessing or using our services, 
+            Welcome to Easy Subs Tech, a platform that connects users to various services. By accessing or using our services, 
             you agree to comply with and be bound by the following terms and conditions. If you do not agree to these terms, 
             please refrain from using our services.
           </p>
@@ -64,7 +64,7 @@ const TermsAndConditions = () => {
 
           <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Contact Us</h2>
           <p className="text-gray-700">
-            If you have any questions about these terms and conditions, feel free to contact us at support@[company].com.
+            If you have any questions about these terms and conditions, feel free to contact us at info@easysubstech.com
           </p>
         </div>
       </main>

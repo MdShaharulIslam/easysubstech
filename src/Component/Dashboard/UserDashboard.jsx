@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useAuth from "../Hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const UserDashboard = () => {
   const { user } = useAuth(); // Get the current authenticated user's information
@@ -57,7 +58,24 @@ const UserDashboard = () => {
         <p>Email: {userInfo.email}</p>
         <p>Subscription: {userInfo.subscriptionStatus}</p>
       </div>
+      <div className=" shadow-md rounded-lg p-6">
+      <Link
+                  to="/TermsAndConditions"
+                  className="block px-4 py-2 rounded hover:bg-gray-700"
+                >
+                  Terms & Condition
+                </Link>
+            <Link
+                  to="/ReturnPolice"
+                  className="block px-4 py-2 rounded hover:bg-gray-700"
+                >
+                 Privacy Policy & Refound
+                </Link>
+      </div>
     </div>
+
+
+    
   );
 };
 

@@ -39,7 +39,7 @@ const ReturnPolicy = () => {
                         <section className="mb-6">
                             <h2 className="text-xl font-semibold text-gray-700 mb-2">Overview</h2>
                             <p className="text-gray-600">
-                                At [Your Website Name], customer satisfaction is our top priority. If
+                                At Easy Subs Tech, customer satisfaction is our top priority. If
                                 you are not fully satisfied with your purchase or experience, we are
                                 here to help.
                             </p>

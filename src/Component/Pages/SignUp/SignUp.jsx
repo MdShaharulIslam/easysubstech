@@ -160,8 +160,9 @@ const SignUp = () => {
                             type="file"
                             {...register("image", { required: true })}
                             name="image"
-                            className="bg-gray-700 border-none focus:ring-2 focus:ring-blue-500"
+                            className="bg-gray-700 border-none  focus:ring-2 focus:ring-blue-500"
                         />
+                        {/* <p className="btn">Profile Picture</p> */}
                         {errors.image && <p className="text-red-400 mt-2">Upload your profile picture</p>}
                     </div>
 

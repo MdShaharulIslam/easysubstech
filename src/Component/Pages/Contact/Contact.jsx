@@ -140,6 +140,19 @@ const ContactUs = () => {
                   LinkedIn
                 </a>
               </div>
+               <div className="mt-4">
+                <p className="font-medium">More information</p>
+                <p>
+                                easysubstech@gmail.com 
+                                <br />
+                                info@easysubstech.com
+                                <br />
+                                pay@easysubstech.com
+                                <br />
+                                payment@easysubstech.com
+                                <br />
+                </p>
+               </div>
             </div>
           </div>
         </div>
