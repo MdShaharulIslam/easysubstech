@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const AddServices = () => {
@@ -9,47 +9,49 @@ const AddServices = () => {
     salePrice: 0,
     image: "",
   });
-
   const [loading, setLoading] = useState(false);
 
   const image_key = import.meta.env.VITE_IMAGE_KEY;
   const image_api = `https://api.imgbb.com/1/upload?key=${image_key}`;
+  const backendURL = "http://localhost:5000/services";
 
-  // Handle Form Input Change
+  // Handle form input changes dynamically
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setService({ ...service, [name]: value });
+    setService((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle Image Upload
+  // Handle image upload separately
   const handleImageUpload = async (e) => {
     const imageFile = e.target.files[0];
+    if (!imageFile) return;
+
     const formData = new FormData();
     formData.append("image", imageFile);
 
     try {
       const response = await axios.post(image_api, formData);
-      setService({ ...service, image: response.data.data.display_url });
+      const imageUrl = response.data.data.display_url;
+      setService((prev) => ({ ...prev, image: imageUrl }));
+      alert("Image uploaded successfully!");
     } catch (error) {
-      console.error("Image upload failed:", error.message);
+      console.error("Error uploading image:", error.message);
+      alert("Failed to upload image. Please try again.");
     }
   };
 
-  // Handle Form Submit
+  // Submit data to the backend
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const backendURL = "http://localhost:5000/services"; // Update this to your live server URL if deployed
-
     try {
-      const response = await axios.post(backendURL, service);
+      await axios.post(backendURL, service);
       alert("Service added successfully!");
-      console.log(response);
       setService({ productName: "", brand: "", description: "", salePrice: 0, image: "" });
     } catch (error) {
       console.error("Error adding service:", error.message);
-      alert("Failed to add service.");
+      alert("Failed to add service. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -64,42 +66,31 @@ const AddServices = () => {
 
       {/* General Information */}
       <div className="mb-8">
-        <h2 className="text-lg font-semibold mb-4">General Information</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">Product Name</label>
-            <input
-              type="text"
-              name="productName"
-              value={service.productName}
-              onChange={handleChange}
-              placeholder="Type Product Name"
-              className="w-full p-2 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-1">Brand</label>
-            <input
-              type="text"
-              name="brand"
-              value={service.brand}
-              onChange={handleChange}
-              placeholder="Facebook/Youtube"
-              className="w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              required
-            />
-          </div>
-        </div>
-
-        <label className="block text-sm font-medium mt-4 mb-1">Description</label>
+        <label className="block text-sm font-medium mb-1">Product Name</label>
+        <input
+          type="text"
+          name="productName"
+          value={service.productName}
+          onChange={handleChange}
+          className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+          required
+        />
+        <label className="block text-sm font-medium mt-4">Brand</label>
+        <input
+          type="text"
+          name="brand"
+          value={service.brand}
+          onChange={handleChange}
+          className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+          required
+        />
+        <label className="block text-sm font-medium mt-4">Description</label>
         <textarea
           name="description"
           value={service.description}
           onChange={handleChange}
           rows="4"
-          placeholder="Enter product description..."
-          className="w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
           required
         ></textarea>
       </div>
@@ -113,8 +104,7 @@ const AddServices = () => {
             name="salePrice"
             value={service.salePrice}
             onChange={handleChange}
-            placeholder="0$-1000$"
-            className="w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
             required
           />
         </div>
@@ -123,15 +113,18 @@ const AddServices = () => {
           <input
             type="file"
             onChange={handleImageUpload}
-            className="w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required
+            className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
           />
         </div>
       </div>
 
       {service.image && (
         <div className="mt-4">
-          <img src={service.image} alt="Uploaded" className="w-36 mx-auto rounded-md border" />
+          <img
+            src={service.image}
+            alt="Uploaded"
+            className="w-36 mx-auto rounded-md border"
+          />
         </div>
       )}
 
@@ -147,7 +140,9 @@ const AddServices = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`px-4 py-2 text-white rounded-md ${loading ? "bg-gray-500" : "bg-green-500 hover:bg-green-600"}`}
+          className={`px-4 py-2 text-white rounded-md ${
+            loading ? "bg-gray-500" : "bg-green-500 hover:bg-green-600"
+          }`}
         >
           {loading ? "Publishing..." : "Publish"}
         </button>

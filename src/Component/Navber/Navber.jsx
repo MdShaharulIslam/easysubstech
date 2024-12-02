@@ -21,7 +21,7 @@ const Navber = () => {
       navigate("/");
     });
   };
-
+ 
 
   return (
     <div>
@@ -118,6 +118,18 @@ const Navber = () => {
               >
                 Checkout
               </Link>
+              <Link
+                to="/ReturnPolice"
+                className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
+              >
+                Privacy Policy & Refound
+              </Link>
+              <Link
+                to="/dashboard"
+                className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
+              >
+                Dashboard
+              </Link>
             </div>
             <div className="relative">
               {user ? (
@@ -130,17 +142,30 @@ const Navber = () => {
                   />
                   {dropdownOpen && (
                     <div className="absolute right-0 mt-2 bg-white border rounded shadow-md w-48">
+                      {/* User Display */}
                       <div className="p-4 text-sm text-gray-700">
                         {user.displayName || "User"}
                       </div>
+
+                      {/* Logout Button */}
                       <button
                         onClick={handleLogout}
                         className="w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100"
                       >
                         Logout
                       </button>
+
+                      {/* Exit Button */}
+                      <button
+                        // onClick={handleExit}
+                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        className="w-full px-4 py-2 text-left text-blue-500 hover:bg-gray-100"
+                      >
+                        Exit
+                      </button>
                     </div>
                   )}
+
                 </div>
               ) : (
                 <>

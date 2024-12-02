@@ -15,7 +15,6 @@ const SignUp = () => {
     const {
         register,
         handleSubmit,
-        
         formState: { errors },
     } = useForm();
 
@@ -26,6 +25,7 @@ const SignUp = () => {
             const formData = new FormData();
             formData.append("image", data.image[0]);
 
+            // Upload profile image to imgbb
             const imageResponse = await fetch(image_api, {
                 method: "POST",
                 body: formData,
@@ -34,18 +34,42 @@ const SignUp = () => {
             const imageResult = await imageResponse.json();
 
             if (imageResult.success) {
+                // Create user with Firebase or other authentication service
                 await createUser(data.email, data.password);
                 await userUpdate(data.name, imageResult.data.display_url);
 
-                Swal.fire({
-                    title: "Success!",
-                    text: "Your account has been created successfully!",
-                    icon: "success",
-                    showConfirmButton: false,
-                    timer: 1000,
+                // Save user information in backend
+                const userInfo = {
+                    name: data.name,
+                    email: data.email,
+                    image: imageResult.data.display_url,
+                    role: "user", // Default role
+                    createdAt: new Date(),
+                };
+
+                const backendResponse = await fetch("http://localhost:5000/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(userInfo),
                 });
 
-                navigate("/");
+                const backendResult = await backendResponse.json();
+
+                if (backendResponse.ok) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Your account has been created successfully!",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1000,
+                    });
+
+                    navigate("/");
+                } else {
+                    throw new Error(backendResult.message || "Failed to save user in the database.");
+                }
             } else {
                 throw new Error("Image upload failed.");
             }
@@ -67,17 +91,10 @@ const SignUp = () => {
                 shadow={false}
                 className="mx-auto md:w-1/2 lg:w-1/3 bg-gray-800 p-8 rounded-lg"
             >
-                <Typography
-                    variant="h4"
-                    color="white"
-                    className="text-center font-extrabold"
-                >
+                <Typography variant="h4" color="white" className="text-center font-extrabold">
                     Easysubstech | Sign Up
                 </Typography>
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    className="mt-8 space-y-6"
-                >
+                <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
                     {/* Name Input */}
                     <div>
                         <Typography variant="h6" color="white">
@@ -91,9 +108,7 @@ const SignUp = () => {
                             placeholder="John Wick"
                             className="bg-gray-700 border-none text-white"
                         />
-                        {errors.name && (
-                            <p className="text-red-400 mt-2">Write your valid name</p>
-                        )}
+                        {errors.name && <p className="text-red-400 mt-2">Write your valid name</p>}
                     </div>
 
                     {/* Email Input */}
@@ -109,9 +124,7 @@ const SignUp = () => {
                             placeholder="name@mail.com"
                             className="bg-gray-700 border-none text-white"
                         />
-                        {errors.email && (
-                            <p className="text-red-400 mt-2">Enter your valid email</p>
-                        )}
+                        {errors.email && <p className="text-red-400 mt-2">Enter your valid email</p>}
                     </div>
 
                     {/* Password Input */}
@@ -149,28 +162,23 @@ const SignUp = () => {
                             name="image"
                             className="bg-gray-700 border-none focus:ring-2 focus:ring-blue-500"
                         />
-                        {errors.image && (
-                            <p className="text-red-400 mt-2">Upload your profile picture</p>
-                        )}
+                        {errors.image && <p className="text-red-400 mt-2">Upload your profile picture</p>}
                     </div>
 
                     {/* Sign Up Button */}
                     <div className="mt-6 text-center">
-                    <AwesomeButton
-							type="primary"
-							size="medium"
-							className="mt-6 bg-gradient-to-r from-blue-500  w-full via-teal-500 to-cyan-500 text-white hover:scale-105 transition-transform"
-						>
-							SignUp
-						</AwesomeButton>
+                        <AwesomeButton
+                            type="primary"
+                            size="medium"
+                            className="mt-6 bg-gradient-to-r from-blue-500  w-full via-teal-500 to-cyan-500 text-white hover:scale-105 transition-transform"
+                        >
+                            SignUp
+                        </AwesomeButton>
                     </div>
                 </form>
                 <Typography color="white" className="my-4 text-center">
                     Already have an account?{" "}
-                    <Link
-                        to="/login"
-                        className="font-medium text-blue-400 hover:underline"
-                    >
+                    <Link to="/login" className="font-medium text-blue-400 hover:underline">
                         Login
                     </Link>
                 </Typography>
@@ -180,3 +188,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
+

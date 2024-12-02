@@ -10,6 +10,7 @@ const Dashboard = () => {
   useEffect(() => {
     // Mock role fetching, replace this with API or auth logic
     const userRole = localStorage.getItem("userRole"); // e.g., from auth token
+    console.log(userRole);
     if (!userRole) {
       navigate("/login"); // Redirect to login if not authenticated
     }

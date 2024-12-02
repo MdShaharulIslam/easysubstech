@@ -21,52 +21,52 @@ export const router = createBrowserRouter([
     element: <Main></Main>, // Main layout with navigation
     children: [
       {
-        path: "/", 
-        element: <Home></Home>, 
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path: "/about", 
-        element: <About></About>, 
+        path: "/about",
+        element: <About></About>,
       },
       {
-        path: "/checkout", 
-        element: <Checkout></Checkout>, 
+        path: "/checkout",
+        element: <Checkout></Checkout>,
       },
       {
-        path: "/contact", 
-        element: <ContactUs></ContactUs>, 
+        path: "/contact",
+        element: <ContactUs></ContactUs>,
       },
       {
-        path: "/services", 
-        element: <Services></Services>, 
+        path: "/services",
+        element: <Services></Services>,
       },
       {
-        path: "/ReturnPolice", 
-        element: <ReturnPolice></ReturnPolice>, 
+        path: "/ReturnPolice",
+        element: <ReturnPolice></ReturnPolice>,
       },
       {
-        path: "/register", 
-        element: <SignUp></SignUp> , 
+        path: "/register",
+        element: <SignUp></SignUp>,
       },
       {
-        path: "/login", 
-        element: <Login></Login> , 
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path: "/payment", 
-        element: <PrivateRoute><Payment></Payment></PrivateRoute>, 
+        path: "/payment",
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>,
       },
       {
-path:'/AddServices',
-element:<AddServices></AddServices>
+        path: '/AddServices',
+        element: <AddServices></AddServices>
       },
       {
-        path: "/dashboard", 
+        path: "/dashboard",
         element: <PrivateRoute>
           <Dashboard></Dashboard>
-        </PrivateRoute>, 
+        </PrivateRoute>,
       },
-    
+
     ],
   },
 ]);

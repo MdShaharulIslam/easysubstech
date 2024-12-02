@@ -1,9 +1,12 @@
 import { Navigate, useLocation } from "react-router-dom";
-import useAuth from "../Component/Hooks/useAuth";
+// import useAuth from "../Component/Hooks/useAuth";
 import { Spinner } from "@material-tailwind/react";
 
+import { useContext } from "react";
+import { AuthContext } from "../Component/Providers/AuthProvider";
 const PrivateRoute = ({ children }) => {
-	const { user, loading } = useAuth();
+	const { user, loading } = useContext(AuthContext);
+	console.log(user);
 	const location = useLocation();
 
 	if (loading) {
@@ -14,7 +17,8 @@ const PrivateRoute = ({ children }) => {
 		return children;
 	}
 
-	return <Navigate to="/login" state={{ from: location }} replace />;
+	return <Navigate to="/login" state={{from: location}} replace></Navigate>
+
 };
 
 export default PrivateRoute;
