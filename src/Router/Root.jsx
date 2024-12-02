@@ -62,9 +62,8 @@ element:<AddServices></AddServices>
       },
       {
         path: "/dashboard", 
-        element: <PrivateRoute>
-          <Dashboard></Dashboard>
-        </PrivateRoute>, 
+        element: <Dashboard></Dashboard>,
+        //  <PrivateRoute></PrivateRoute>, 
       },
     
     ],
