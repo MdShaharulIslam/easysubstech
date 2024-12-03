@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import useAuth from "./../Hooks/useAuth";
 import Swal from "sweetalert2";
+
 const Navber = () => {
   const [isOpen, setIsOpen] = useState(false); // For mobile menu
   const [dropdownOpen, setDropdownOpen] = useState(false); // For user dropdown
@@ -21,7 +22,6 @@ const Navber = () => {
       navigate("/");
     });
   };
- 
 
   return (
     <div>
@@ -36,8 +36,6 @@ const Navber = () => {
                 alt="Logo"
               />
             </a>
-
-
 
             {/* Mobile menu button */}
             <div className="flex md:hidden">
@@ -118,24 +116,16 @@ const Navber = () => {
               >
                 Checkout
               </Link>
-              <Link
-                to="/ReturnPolice"
-                className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
-              >
-                Privacy Policy & Refound
-              </Link>
-              <Link
-                to="/TermsAndConditions"
-                className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
-              >
-                TermsAndConditions
-              </Link>
-              <Link
-                to="/dashboard"
-                className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
-              >
-                Dashboard
-              </Link>
+
+              {/* Conditionally Render Dashboard */}
+              {user && (
+                <Link
+                  to="/dashboard"
+                  className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
+                >
+                  Dashboard
+                </Link>
+              )}
             </div>
             <div className="relative">
               {user ? (
@@ -160,8 +150,6 @@ const Navber = () => {
                       >
                         Logout
                       </button>
-
-                      {/* Exit Button */}
                       <button
                         // onClick={handleExit}
                         onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -171,7 +159,6 @@ const Navber = () => {
                       </button>
                     </div>
                   )}
-
                 </div>
               ) : (
                 <>
@@ -204,3 +191,5 @@ const Navber = () => {
 };
 
 export default Navber;
+
+
