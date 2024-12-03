@@ -2,6 +2,7 @@ import serv1 from "../../../../src/assets/payment-processing-101-header.jpg";
 import serv2 from "../../../../src/assets/crypto.jpg";
 import serv3 from "../../../../src/assets/recuring.png";
 import { Link } from "react-router-dom";
+import ProductDynamic from "../Product/ProductDynamic";
 const Services = () => {
   return (
     <section className=" py-16" id="services">
@@ -97,7 +98,9 @@ const Services = () => {
           </Link>
         </div>
       </div>
-      
+      <div>
+        <ProductDynamic></ProductDynamic>
+      </div>
     </section>
   );
 };
