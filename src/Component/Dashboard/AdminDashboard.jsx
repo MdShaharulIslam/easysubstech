@@ -35,6 +35,12 @@ const AdminDashboard = () => {
                 >
                  Privacy Policy & Refound
                 </Link>
+            <Link
+                  to="/AddServices"
+                  className="block px-4 py-2 rounded hover:bg-gray-700"
+                >
+                 AddServices
+                </Link>
             </ul>
           </nav>
         </div>
