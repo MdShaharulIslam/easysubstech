@@ -1,10 +1,11 @@
 import bgImg from "../../../../public/bg.gif";
 import heroImg from "../../../../public/hero.png";
 import Product from "../Product/Product";
+import ProductDynamic from "../Product/ProductDynamic";
 
 const Home = () => {
   return (
-    <div className="bg-gray-50 text-gray-900">
+    <div className=" justify-center items-center text-gray-900">
       {/* Header Section */}
       <header
         className="bg-cover bg-center bg-no-repeat bg-white dark:bg-gray-900"
@@ -17,11 +18,14 @@ const Home = () => {
             <div className="w-full lg:w-1/2">
               <div className="lg:max-w-lg bg-white bg-opacity-75 p-6 rounded-lg shadow-md">
                 <h1 className="text-3xl font-semibold text-black dark:text-black lg:text-4xl">
-                Make Your Business More Efficient with  
+                  Make Your Business More Efficient with
                   <span className="text-blue-500"> Easysubstech </span>
                 </h1>
                 <p className="mt-3 text-gray-600 dark:text-black">
-                Empowering creators and businesses to unlock the full potential of Facebook monetization. With secure tools, detailed analytics, and expert support, Easysubstech ensures a seamless journey toward financial growth and success.
+                  Empowering creators and businesses to unlock the full
+                  potential of Facebook monetization. With secure tools,
+                  detailed analytics, and expert support, Easysubstech ensures a
+                  seamless journey toward financial growth and success.
                 </p>
                 <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500">
                   Get Started Now
@@ -38,10 +42,12 @@ const Home = () => {
           </div>
         </div>
       </header>
-      <div>
 
-<Product></Product>
-</div>
+      <div>
+        <Product></Product>
+        <ProductDynamic></ProductDynamic>
+      </div>
+
       {/* Why Choose Section */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container px-6 mx-auto text-center">
@@ -54,7 +60,8 @@ const Home = () => {
                 Global Accessibility
               </h3>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Conduct transactions effortlessly across the globe with integrated currency conversion.
+                Conduct transactions effortlessly across the globe with
+                integrated currency conversion.
               </p>
             </div>
             <div
@@ -65,7 +72,8 @@ const Home = () => {
                 Secure Payments
               </h3>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Ensure top-notch security with SSL certification and fraud prevention.
+                Ensure top-notch security with SSL certification and fraud
+                prevention.
               </p>
             </div>
             <div
@@ -76,14 +84,13 @@ const Home = () => {
                 Transparent Policies
               </h3>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Clear and fair terms, refund options, and customer-first commitment.
+                Clear and fair terms, refund options, and customer-first
+                commitment.
               </p>
             </div>
           </div>
         </div>
       </section>
-
-     
 
       {/* Features Section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-800">
@@ -93,20 +100,38 @@ const Home = () => {
           </h2>
           <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { title: "Multi-Currency Support", description: "Transact in multiple currencies seamlessly." },
-              { title: "Fast Transactions", description: "Enjoy lightning-speed payments and transfers." },
-              { title: "24/7 Support", description: "Round-the-clock assistance for all your needs." },
-              { title: "User-Friendly Interface", description: "A simple yet powerful design for effortless use." },
+              {
+                title: "Multi-Currency Support",
+                description: "Transact in multiple currencies seamlessly.",
+              },
+              {
+                title: "Fast Transactions",
+                description: "Enjoy lightning-speed payments and transfers.",
+              },
+              {
+                title: "24/7 Support",
+                description: "Round-the-clock assistance for all your needs.",
+              },
+              {
+                title: "User-Friendly Interface",
+                description: "A simple yet powerful design for effortless use.",
+              },
             ].map((feature, index) => (
-              <div key={index} className="p-6 text-center bg-white rounded-lg shadow-md dark:bg-gray-900">
-                <h3 className="text-lg font-semibold text-gray-700 dark:text-white">{feature.title}</h3>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{feature.description}</p>
+              <div
+                key={index}
+                className="p-6 text-center bg-white rounded-lg shadow-md dark:bg-gray-900"
+              >
+                <h3 className="text-lg font-semibold text-gray-700 dark:text-white">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
-      
     </div>
   );
 };
