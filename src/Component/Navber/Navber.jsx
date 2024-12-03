@@ -110,12 +110,12 @@ const Navber = () => {
               >
                 Contact Us
               </Link>
-              <Link
+              {/* <Link
                 to="/checkout"
                 className="my-2 text-gray-700 dark:text-gray-200 hover:text-blue-500 md:mx-4 md:my-0 transition-colors duration-300"
               >
                 Checkout
-              </Link>
+              </Link> */}
 
               {/* Conditionally Render Dashboard */}
               {user && (

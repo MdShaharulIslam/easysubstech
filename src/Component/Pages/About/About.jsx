@@ -51,9 +51,9 @@ const About = () => {
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              "Crypto Payments",
-              "Recurring Payments",
-              "Fraud Prevention",
+              
+              "Fast Work",
+              "Refound System",
               "Global Reach",
               "Secure Transactions",
               "User-Friendly Interface",

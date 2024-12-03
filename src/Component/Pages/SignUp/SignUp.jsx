@@ -1,5 +1,5 @@
 import { Card, Input, Typography } from "@material-tailwind/react";
-
+import { BsGoogle } from "react-icons/bs";
 import { AwesomeButton } from "react-awesome-button";
 
 import {  useForm } from "react-hook-form";
@@ -11,13 +11,34 @@ const image_key = import.meta.env.VITE_IMAGE_KEY;
 const image_api = `https://api.imgbb.com/1/upload?key=${image_key}`;
 
 const SignUp = () => {
-    const { createUser, userUpdate } = useAuth();
+    const { createUser, userUpdate,loginWithGoogle } = useAuth();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-
+    const handleSignInWithGoogle = async () => {
+        try {
+            const user = await loginWithGoogle (); // Correct function name
+            console.log(user);
+            Swal.fire({
+                title: "Success!",
+                text: "Google login successful!",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            navigate("/");  // Redirect on success
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.message,
+                showConfirmButton: false,
+                timer: 1000,
+            });
+        }
+    };
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
@@ -176,7 +197,14 @@ const SignUp = () => {
                             SignUp
                         </AwesomeButton>
                     </div>
+                
                 </form>
+    <div className="flex justify-center items-center ">
+                <BsGoogle
+                  onClick={handleSignInWithGoogle}
+                  className="text-3xl text-[#008FD4] cursor-pointer hover:text-[#0870A1] "
+                />
+              </div>
                 <Typography color="white" className="my-4 text-center">
                     Already have an account?{" "}
                     <Link to="/login" className="font-medium text-blue-400 hover:underline">

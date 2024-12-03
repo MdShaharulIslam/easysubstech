@@ -1,7 +1,8 @@
 import serv1 from "../../../../src/assets/payment-processing-101-header.jpg";
-import serv2 from "../../../../src/assets/crypto.jpg";
+import serv2 from "../../../../src/assets/5-smart-things-to-know-about-payment-banks.webp";
 import serv3 from "../../../../src/assets/recuring.png";
 import { Link } from "react-router-dom";
+import ProductDynamic from "../Product/ProductDynamic";
 const Services = () => {
   return (
     <section className=" py-16" id="services">
@@ -43,10 +44,10 @@ const Services = () => {
             />
             <div className="p-6">
               <h3 className="text-xl font-semibold text-white mb-4">
-                Crypto Payments
+                Bank Payments
               </h3>
               <p className="text-white mb-4">
-                Accept cryptocurrency payments with ease using our user-friendly interface, designed for modern businesses.
+                Accept Bank payments with ease using our user-friendly interface, designed for modern businesses.
               </p>
               <a
                 href="/contact"
@@ -97,7 +98,9 @@ const Services = () => {
           </Link>
         </div>
       </div>
-      
+      <div>
+        <ProductDynamic></ProductDynamic>
+      </div>
     </section>
   );
 };

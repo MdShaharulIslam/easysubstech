@@ -1,6 +1,7 @@
 import { FaCcAmex, FaCcDiscover, FaCcMastercard, FaFacebook, FaPaypal, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { RiVisaFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <div>
@@ -45,9 +46,9 @@ const Footer = () => {
                             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                 <div>
                                     <h3 className="text-gray-700 uppercase dark:text-white">About</h3>
-                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Company</a>
-                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">community</a>
-                                    <a href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Careers</a>
+                                    <Link to='/about' href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">About us</Link>
+                                    <Link to='/contact' href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Contact Us</Link>
+                                    <Link to='/TermsAndConditions' href="#" className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">TermsAnd Conditions</Link>
                                 </div>
 
                                 <div >
