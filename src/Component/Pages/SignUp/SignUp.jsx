@@ -1,8 +1,7 @@
 import { Card, Input, Typography } from "@material-tailwind/react";
 import { BsGoogle } from "react-icons/bs";
 import { AwesomeButton } from "react-awesome-button";
-
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
@@ -11,23 +10,48 @@ const image_key = import.meta.env.VITE_IMAGE_KEY;
 const image_api = `https://api.imgbb.com/1/upload?key=${image_key}`;
 
 const SignUp = () => {
-    const { createUser, userUpdate,loginWithGoogle } = useAuth();
+    const { createUser, userUpdate, loginWithGoogle } = useAuth();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const navigate = useNavigate();
+
     const handleSignInWithGoogle = async () => {
         try {
-            const user = await loginWithGoogle (); // Correct function name
-            Swal.fire({
-                title: "Success!",
-                text: "Google login successful!",
-                icon: "success",
-                showConfirmButton: false,
-                timer: 1000,
+            const user = await loginWithGoogle();
+
+            const userInfo = {
+                name: user.displayName,
+                email: user.email,
+                image: user.photoURL,
+                role: "user",
+                createdAt: new Date(),
+            };
+
+            const backendResponse = await fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userInfo),
             });
-            navigate("/");  // Redirect on success
+
+            if (backendResponse.ok) {
+                Swal.fire({
+                    title: "Success!",
+                    text: "Google login successful!",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1000,
+                });
+
+                navigate("/");
+            } else {
+                const backendResult = await backendResponse.json();
+                throw new Error(backendResult.message || "Failed to save user in the database.");
+            }
         } catch (error) {
             Swal.fire({
                 icon: "error",
@@ -38,14 +62,12 @@ const SignUp = () => {
             });
         }
     };
-    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         try {
             const formData = new FormData();
             formData.append("image", data.image[0]);
 
-            // Upload profile image to imgbb
             const imageResponse = await fetch(image_api, {
                 method: "POST",
                 body: formData,
@@ -54,16 +76,14 @@ const SignUp = () => {
             const imageResult = await imageResponse.json();
 
             if (imageResult.success) {
-                // Create user with Firebase or other authentication service
                 await createUser(data.email, data.password);
                 await userUpdate(data.name, imageResult.data.display_url);
 
-                // Save user information in backend
                 const userInfo = {
-                    name: data.name,
+                    name: data.displayName,
                     email: data.email,
                     image: imageResult.data.display_url,
-                    role: "user", // Default role
+                    role: "user",
                     createdAt: new Date(),
                 };
 
@@ -74,8 +94,6 @@ const SignUp = () => {
                     },
                     body: JSON.stringify(userInfo),
                 });
-
-                const backendResult = await backendResponse.json();
 
                 if (backendResponse.ok) {
                     Swal.fire({
@@ -88,6 +106,7 @@ const SignUp = () => {
 
                     navigate("/");
                 } else {
+                    const backendResult = await backendResponse.json();
                     throw new Error(backendResult.message || "Failed to save user in the database.");
                 }
             } else {
@@ -115,7 +134,6 @@ const SignUp = () => {
                     Easysubstech | Sign Up
                 </Typography>
                 <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
-                    {/* Name Input */}
                     <div>
                         <Typography variant="h6" color="white">
                             Your Name
@@ -130,8 +148,6 @@ const SignUp = () => {
                         />
                         {errors.name && <p className="text-red-400 mt-2">Write your valid name</p>}
                     </div>
-
-                    {/* Email Input */}
                     <div>
                         <Typography variant="h6" color="white">
                             Your Email
@@ -146,8 +162,6 @@ const SignUp = () => {
                         />
                         {errors.email && <p className="text-red-400 mt-2">Enter your valid email</p>}
                     </div>
-
-                    {/* Password Input */}
                     <div>
                         <Typography variant="h6" color="white">
                             Password
@@ -170,8 +184,6 @@ const SignUp = () => {
                             </p>
                         )}
                     </div>
-
-                    {/* Profile Picture Upload */}
                     <div>
                         <Typography variant="h6" color="white">
                             Profile Picture
@@ -184,25 +196,22 @@ const SignUp = () => {
                         />
                         {errors.image && <p className="text-red-400 mt-2">Upload your profile picture</p>}
                     </div>
-
-                    {/* Sign Up Button */}
                     <div className="mt-6 text-center">
                         <AwesomeButton
                             type="primary"
                             size="medium"
-                            className="mt-6 bg-gradient-to-r from-blue-500  w-full via-teal-500 to-cyan-500 text-white hover:scale-105 transition-transform"
+                            className="mt-6 bg-gradient-to-r from-blue-500 via-teal-500 to-cyan-500 text-white hover:scale-105 transition-transform"
                         >
                             SignUp
                         </AwesomeButton>
                     </div>
-                
                 </form>
-    <div className="flex justify-center items-center ">
-                <BsGoogle
-                  onClick={handleSignInWithGoogle}
-                  className="text-3xl text-[#008FD4] cursor-pointer hover:text-[#0870A1] "
-                />
-              </div>
+                <div className="flex justify-center items-center">
+                    <BsGoogle
+                        onClick={handleSignInWithGoogle}
+                        className="text-3xl text-[#008FD4] cursor-pointer hover:text-[#0870A1]"
+                    />
+                </div>
                 <Typography color="white" className="my-4 text-center">
                     Already have an account?{" "}
                     <Link to="/login" className="font-medium text-blue-400 hover:underline">
@@ -215,6 +224,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-
-
