@@ -8,12 +8,13 @@ const AddServices = () => {
     description: "",
     salePrice: 0,
     image: "",
+    category: "", // Added category field
   });
   const [loading, setLoading] = useState(false);
 
   const image_key = import.meta.env.VITE_IMAGE_KEY;
   const image_api = `https://api.imgbb.com/1/upload?key=${image_key}`;
-  const backendURL = "http://localhost:5000/services";
+  const backendURL = "https://easysubstech-server.vercel.app/services";
 
   // Handle form input changes dynamically
   const handleChange = (e) => {
@@ -48,7 +49,14 @@ const AddServices = () => {
     try {
       await axios.post(backendURL, service);
       alert("Service added successfully!");
-      setService({ productName: "", brand: "", description: "", salePrice: 0, image: "" });
+      setService({
+        productName: "",
+        brand: "",
+        description: "",
+        salePrice: 0,
+        image: "",
+        category: "", // Reset category field
+      });
     } catch (error) {
       console.error("Error adding service:", error.message);
       alert("Failed to add service. Please try again.");
@@ -81,8 +89,7 @@ const AddServices = () => {
           name="brand"
           value={service.brand}
           onChange={handleChange}
-          className="w-full p-2 border text-black
-           rounded-md focus:ring-blue-500 focus:border-blue-500"
+          className="w-full p-2 border text-black rounded-md focus:ring-blue-500 focus:border-blue-500"
           required
         />
         <label className="block text-sm font-medium mt-4">Description</label>
@@ -94,6 +101,20 @@ const AddServices = () => {
           className="w-full p-2 border text-black rounded-md focus:ring-blue-500 focus:border-blue-500"
           required
         ></textarea>
+        <label className="block text-sm font-medium mt-4">Category</label>
+        <select
+          name="category"
+          value={service.category}
+          onChange={handleChange}
+          className="w-full p-2 border text-black rounded-md focus:ring-blue-500 focus:border-blue-500"
+          required
+        >
+          <option value="" disabled>Select a Category</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Headphone">Headphone</option>
+          <option value="Microphone">Microphone</option>
+          <option value="Keyboard">Keyboard</option>
+        </select>
       </div>
 
       {/* Price and Image Upload */}
@@ -105,7 +126,7 @@ const AddServices = () => {
             name="salePrice"
             value={service.salePrice}
             onChange={handleChange}
-            className="w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-2 border rounded-md text-black"
             required
           />
         </div>
@@ -133,7 +154,16 @@ const AddServices = () => {
       <div className="mt-8 flex justify-end gap-4">
         <button
           type="button"
-          onClick={() => setService({ productName: "", brand: "", description: "", salePrice: 0, image: "" })}
+          onClick={() =>
+            setService({
+              productName: "",
+              brand: "",
+              description: "",
+              salePrice: 0,
+              image: "",
+              category: "", // Reset category field
+            })
+          }
           className="px-4 py-2 border rounded-md hover:bg-gray-100"
         >
           Cancel

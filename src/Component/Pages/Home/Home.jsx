@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import bgImg from "../../../../public/bg.gif";
 import heroImg from "../../../../public/hero.png";
 import Product from "../Product/Product";
@@ -18,18 +19,18 @@ const Home = () => {
             <div className="w-full lg:w-1/2">
               <div className="lg:max-w-lg bg-white bg-opacity-75 p-6 rounded-lg shadow-md">
                 <h1 className="text-3xl font-semibold text-black dark:text-black lg:text-4xl">
-                  Make Your Business More Efficient with
+                Welcome to 
                   <span className="text-blue-500"> Easysubstech </span>
                 </h1>
                 <p className="mt-3 text-gray-600 dark:text-black">
-                  Empowering creators and businesses to unlock the full
-                  potential of Facebook monetization. With secure tools,
-                  detailed analytics, and expert support, Easysubstech ensures a
-                  seamless journey toward financial growth and success.
+                Discover the latest in laptops, headphones, and microphones—designed for tech enthusiasts and professionals. At EasySubTech, we bring you cutting-edge technology for seamless connectivity, immersive audio, and exceptional performance. Stay ahead in the digital world with us!
                 </p>
-                <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500">
+                <Link to="/services">
+                 <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500">
                   Get Started Now
                 </button>
+                </Link>
+               
               </div>
             </div>
             <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">

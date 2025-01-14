@@ -1,72 +1,86 @@
-import  { useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const CheckoutForm = () => {
-  const stripe = useStripe();
-  const elements = useElements();
+  const [paymentMethod, setPaymentMethod] = useState("visa");
+  const [email, setEmail] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsProcessing(true);
+    setMessage("");
 
-    if (!stripe || !elements) {
-      setMessage("Stripe has not loaded properly.");
-      setIsProcessing(false);
-      return;
-    }
-
-    const cardElement = elements.getElement(CardElement);
-
-    // Mock API Call for Payment Intent (replace with your server endpoint)
-    const response = await fetch("/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 10000 }), // Example amount in cents (100.00 USD)
-    });
-
-    const { clientSecret } = await response.json();
-
-    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: cardElement,
-      },
-    });
-
-    if (error) {
-      setMessage(`Payment failed: ${error.message}`);
-    } else if (paymentIntent.status === "succeeded") {
-      setMessage("Payment successful! Thank you.");
+    // Handle payment processing based on selected method (Visa or PayPal)
+    if (paymentMethod === "visa") {
+      // Process Visa payment logic here (e.g., Stripe payment processing)
+      // For example, use the CardElement to process Visa payments
+    } else if (paymentMethod === "paypal") {
+      // Process PayPal payment logic here (use PayPal SDK or API)
     }
 
     setIsProcessing(false);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <CardElement
-        className="p-4 border rounded-lg"
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#32325d",
-              "::placeholder": { color: "#aab7c4" },
-            },
-            invalid: { color: "#fa755a" },
-          },
-        }}
-      />
-      <button
-        type="submit"
-        disabled={!stripe || isProcessing}
-        className="bg-blue-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-400 disabled:opacity-50"
-      >
-        {isProcessing ? "Processing..." : "Pay Now"}
-      </button>
-      {message && <p className="text-white mt-4">{message}</p>}
-    </form>
+    <div className="max-w-md mx-auto p-6 shadow-lg rounded-lg bg-gray-100">
+      <h2 className="text-xl font-bold text-center mb-4 text-black">Complete Your Payment</h2>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Email Input */}
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-black sm:text-sm"
+          />
+        </div>
+
+        {/* Payment Method Dropdown */}
+        <div className="mb-10">
+          <label htmlFor="payment-method" className="block text-sm font-medium text-gray-700">
+            Payment Method
+          </label>
+          <select
+            id="payment-method"
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm text-black sm:text-sm"
+          >
+            <option value="visa">Visa</option>
+            <option value="paypal">PayPal</option>
+          </select>
+        </div>
+
+       
+       
+
+        {/* Submit Button */}
+        <Link to="/checkout" className="mt-6">
+         <button
+             className="w-full bg-blue-500 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-600 disabled:opacity-50"
+        >
+          {isProcessing ? "Processing..." : "Pay Now"}
+        </button>
+         </Link>
+        
+      </form>
+
+      {/* Message */}
+      {message && (
+        <div className="mt-4 text-center">
+          <p className="text-gray-800">{message}</p>
+        </div>
+      )}
+    </div>
   );
 };
 

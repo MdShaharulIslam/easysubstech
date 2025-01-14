@@ -17,7 +17,7 @@ const UserDashboard = () => {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch("http://localhost:5000/users"); // API endpoint
+        const response = await fetch("https://easysubstech-server.vercel.app/users"); // API endpoint
         if (!response.ok) {
           throw new Error("Failed to fetch user information");
         }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import about from "../../../../public/Add a heading.png";
+import about from "../../../../src/assets/logo.png";
+
 const About = () => {
   return (
     <section className="bg-white bg-opacity-5 py-16" id="about">
@@ -12,7 +13,7 @@ const About = () => {
           <div className="neon-container">
             <img
               src={about}
-              alt="bdCoinsPaid Logo"
+              alt="EasyTechMart Logo"
               className="mx-auto"
             />
           </div>
@@ -20,25 +21,23 @@ const About = () => {
           {/* Description Section */}
           <div>
             <h3 className="text-2xl font-semibold text-white mb-4">
-              Welcome to EasySubsTech
+              Welcome to EasySubTech
             </h3>
             <p className="text-white mb-4">
-              At <span className="font-medium te">EasySubsTech,</span> we are committed to transforming the way you grow and manage your social media presence. As a trusted platform for boosting services on Facebook, YouTube, and other major social platforms, we provide cutting-edge solutions to help individuals, creators, and businesses achieve their digital growth goals.
+              At <span className="font-medium">EasySubTech,</span> we specialize in providing cutting-edge electronic devices to meet the needs of tech enthusiasts, professionals, and everyday users. Our mission is to bring you the latest and most innovative gadgets at unbeatable prices.
             </p>
             <p className="text-white mb-4">
-              Our comprehensive services are designed to increase engagement, amplify visibility, and establish your brand in the competitive world of social media. Whether you're aiming to gain more followers, enhance video views, or promote your content, <span className="font-medium te">EasySubsTech</span>  ensures a seamless and secure experience tailored to your unique needs.
+              From smartphones and laptops to smart home devices and accessories, <span className="font-medium">EasyTechMart</span> offers a comprehensive range of products designed to enhance your digital lifestyle. Whether you are upgrading your workspace, gaming setup, or home entertainment, we have the perfect solution for you.
             </p>
             <p className="text-white mb-4">
-              What sets us apart is our dedication to innovation and user satisfaction. With advanced tools, expert support, and detailed analytics, we empower users to make data-driven decisions and maximize their growth potential. At <span className="font-medium te">EasySubsTech,</span>  we prioritize trust, reliability, and efficiency, making us the go-to platform for anyone looking to thrive in the ever-evolving digital landscape.
-
-              Join us on the journey to success, and let’s boost your online presence together!
+              What sets us apart is our commitment to quality, reliability, and customer satisfaction. We partner with leading brands to ensure that every product in our catalog meets the highest standards. With fast shipping, secure payments, and exceptional customer support, <span className="font-medium">EasyTechMart</span> is your trusted partner for all things tech.
             </p>
             <div className="mt-6">
               <Link
-                to="/contact"
+                to="/services"
                 className="bg-blue-500 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-600 transition duration-200"
               >
-                Contact Us
+                Shop Now
               </Link>
             </div>
           </div>
@@ -50,14 +49,7 @@ const About = () => {
             Why Choose Us?
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {[
-              
-              "Fast Work",
-              "Refound System",
-              "Global Reach",
-              "Secure Transactions",
-              "User-Friendly Interface",
-            ].map((feature, index) => (
+            {["Latest Products", "Affordable Prices", "Fast Shipping", "Secure Transactions", "Customer Support", "Exclusive Deals"].map((feature, index) => (
               <span
                 key={index}
                 className="px-4 py-2 bg-blue-100 text-blue-600 font-semibold rounded-lg shadow-md"
