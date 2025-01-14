@@ -27,12 +27,12 @@ const Navber = () => {
     <div>
       <nav className="relative bg-white shadow dark:bg-gray-800">
         <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
-          {/* Logo */}
+        
           <div className="flex items-center justify-between">
             <a className="neon-wrapper" href="/">
               <img
                 className="neon-logo"
-                src={"/public/Add a heading.png"}
+                src={"/src/assets/logo.png"}
                 alt="Logo"
               />
             </a>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import bgImg from "../../../../public/bg.gif";
-import heroImg from "../../../../public/hero.png";
+import bgImg from "../../../../src/assets/bg.gif";
+import heroImg from "../../../../src/assets/hero.png";
 import Product from "../Product/Product";
 import ProductDynamic from "../Product/ProductDynamic";
 
