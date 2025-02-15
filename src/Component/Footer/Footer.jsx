@@ -17,7 +17,7 @@ const Footer = () => {
                                 </a>
 
                                 <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">
-                                This website owned by yourself Abdullah LLC</p>
+                                Yousuf Abdullah LLC, owned by Syed Yousuf Abdullah Harun, operates in the e-commerce sector, leveraging online platforms to facilitate sales and services. The company is part of a broader business network, with Harun being a prominent figure in various industries, including insurance and trade.</p>
 
                                 <div className="flex mt-6 -mx-2">
                                     <a href="https://www.facebook.com/bdpointsgameshop?mibextid=ZbWKwL"
